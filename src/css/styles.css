@@ -10,11 +10,31 @@ body {
   background-color: #fafafa;
   color: #212121;
   line-height: 1.5;
+  margin: 0;
+  padding: 0;
+
+  border: solid 2.5em rgba(0, 0, 0, 0.1);
+  border-image: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.1) 2%,
+      transparent 2%,
+      transparent 5%
+    )
+    40;
 }
 
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
-  margin-bottom: 16px;
+  margin: 16px;
+}
+
+.country-info {
+  margin: 16px;
+  background: radial-gradient(#000 5%, transparent 10%) 0 0,
+    radial-gradient(rgba(0, 0, 0, 0.1) 1%, transparent 1%) 50px 50px;
+  background-color: #fff;
+  background-size: 5px 5px;
 }
