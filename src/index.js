@@ -7,12 +7,12 @@ import Notiflix from 'notiflix';
 const DEBOUNCE_DELAY = 300;
 
 const refs = {
-    seachField: document.querySelector('#search-box'),
+    searchField: document.querySelector('#search-box'),
     countryList: document.querySelector('.country-list'),
     countryInfo: document.querySelector('.country-info'),
 }
 
-refs.seachField.addEventListener('input', debounce(onSearchInput, DEBOUNCE_DELAY));
+refs.searchField.addEventListener('input', debounce(onSearchInput, DEBOUNCE_DELAY));
 
 function onSearchInput(e) {
   const countryName = e.target.value.trim();
@@ -27,7 +27,7 @@ function onSearchInput(e) {
     .catch((error)=> {
         Notiflix.Notify.failure('Oops, there is no country with that name');
         clearContent();
-        return console.log(error);;
+        return console.log(error);
     });
 }
 
@@ -41,12 +41,12 @@ function onTermsCheck(country) {
     }
 
     else if (country.length === 1) {
-        clearContent(refs.countryList.innerHTML);
+        clearContent();
         renderCountryInfo(country);
 
 
     } else if (country.length > 1 && country.length <= 10) {
-        clearContent(refs.countryInfo.innerHTML);
+        clearContent();
         renderCountryList(country);
     }
 }
@@ -55,7 +55,7 @@ const renderCountryList = country => {
     const markup = country
         .map(({ name, flags }) => {
             return `<li><img src="${flags.svg}" alt="Flag of ${name.official}"
-            width="30" hight="20"><b>${name.official}</p></li>`;})
+            width="30" height="20"><b>${name.official}</p></li>`;})
         .join('');
     
     refs.countryList.innerHTML = markup;
